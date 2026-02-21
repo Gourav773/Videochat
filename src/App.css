@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,234 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+
+body {
+  margin: 0;
+  background: #0f172a;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.app-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  height: 60px;
+  background: #111827;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.header-controls button {
+  margin-left: 10px;
+  background: #1f2937;
+  border: none;
+  padding: 6px 10px;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.leave-btn {
+  background: red;
+}
+
+.timer {
+  margin-right: 15px;
+}
+
+.rec-indicator {
+  color: red;
+  margin-right: 15px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0.5; }
+}
+
+.meeting-body {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.conference-container {
+  flex: 1;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.screen-large {
+  flex: 2;
+}
+
+.peers-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+}
+
+.peer-tile {
+  background: black;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.peer-tile video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.peer-name {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  font-size: 12px;
+  background: rgba(0,0,0,0.5);
+  padding: 4px 6px;
+  border-radius: 4px;
+}
+
+.active {
+  border: 3px solid #06b6d4;
+  box-shadow: 0 0 20px #06b6d4;
+}
+
+.footer {
+  height: 70px;
+  background: #111827;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.footer button {
+  background: #1f2937;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.sidebar {
+  width: 300px;
+  background: #1e293b;
+  padding: 15px;
+}
+
+
+
+body {
+  margin: 0;
+  background: #0f172a;
+  color: white;
+  font-family: Arial;
+}
+
+.conference-container {
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+  padding: 10px;
+}
+
+.screen-large {
+  flex: 2;
+}
+
+.peers-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+}
+
+.peer-tile {
+  position: relative;
+  background: black;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.peer-tile video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.peer-name {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  background: rgba(0,0,0,0.6);
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.hand-indicator {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 20px;
+}
+
+.active {
+  border: 3px solid #06b6d4;
+  box-shadow: 0 0 20px #06b6d4;
+}
+
+.footer {
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background: #111827;
+}
+
+.footer button {
+  padding: 10px 14px;
+  border: none;
+  background: #1f2937;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.recording-controls {
+  display: flex;
+  align-items: center;
+}
+
+.record-btn {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.record-btn.start {
+  background: red;
+  color: white;
+}
+
+.record-btn.stop {
+  background: #444;
+  color: white;
 }

@@ -1,25 +1,62 @@
-import logo from './logo.svg';
-import './App.css';
+// import Header from "./Component/Header";
+// import Footer from "./Component/Footer";
+// import JoinForm from "./Component/Preview";
+// import Conference from "./Component/Conference";
+// import { useEffect } from "react";
+// import { selectIsConnectedToRoom, useHMSActions, useHMSStore } from "@100mslive/react-sdk";
 
-function App() {
+// export default function App() {
+//   const isConnected = useHMSStore(selectIsConnectedToRoom);
+//   const hmsActions = useHMSActions();
+
+//   useEffect(() => {
+//     window.onunload = () => {
+//       if (isConnected) hmsActions.leave();
+//     };
+//   }, [hmsActions, isConnected]);
+
+//   return (
+//     <div className="App min-h-screen flex flex-col">
+//       <Header />
+//       <main className="flex-1">
+//         {isConnected ? <Conference /> : <JoinForm />}
+//       </main>
+//       {isConnected && <Footer />}
+//     </div>
+//   );
+// }
+
+
+
+import { useHMSStore, selectIsConnectedToRoom } from "@100mslive/react-sdk";
+import Preview from "./Component/Preview";
+import Conference from "./Component/Conference";
+import Header from "./Component/Header";
+import Footer from "./Component/Footer";
+import { useState } from "react";
+import "./App.css";
+
+export default function App() {
+  const isConnected = useHMSStore(selectIsConnectedToRoom);
+  const [showParticipants, setShowParticipants] = useState(false);
+  const [showChat, setShowChat] = useState(false);
+
+  if (!isConnected) return <Preview />;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      <Header
+        toggleParticipants={() => setShowParticipants(!showParticipants)}
+        toggleChat={() => setShowChat(!showChat)}
+      />
+
+      <div className="meeting-body">
+        <Conference />
+        {showParticipants && <div className="sidebar">Participants Panel</div>}
+        {showChat && <div className="sidebar">Chat Panel</div>}
+      </div>
+
+      <Footer />
     </div>
   );
 }
-
-export default App;
