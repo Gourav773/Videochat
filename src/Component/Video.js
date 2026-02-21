@@ -58,7 +58,7 @@ export default function Video() {
       formData.append("date", new Date().toISOString().split("T")[0]);
       formData.append("recording", recordedBlob, "recorded-video.webm");
 
-      axios.post("http://localhost:5050/addrecording", formData)
+      axios.post("https://videomeet-1-syct.onrender.com/addrecording", formData)
         .then(() => console.log("Recording uploaded successfully"))
         .catch(console.error);
 
