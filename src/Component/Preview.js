@@ -328,14 +328,14 @@ export default function JoinForm() {
       let roomToJoin = roomId;
 
       if (role === "host" && !roomToJoin) {
-        const createRes = await axios.post("https://videomeet-1-syct.onrender.com/create-room", {
+        const createRes = await axios.post("https://videomeet-2-f733.onrender.com/create-room", {
           name: `Meeting-${Date.now()}`,
         });
         roomToJoin = createRes.data.room.id;
         setGeneratedRoomId(roomToJoin);
       }
 
-      const tokenRes = await axios.post("https://videomeet-1-syct.onrender.com/get-token", {
+      const tokenRes = await axios.post("https://videomeet-2-f733.onrender.com/get-token", {
         room_id: roomToJoin,
         user_id: username,
         role,
@@ -354,7 +354,7 @@ export default function JoinForm() {
     try {
       setLoading(true);
       setError("");
-      const createRes = await axios.post("https://videomeet-1-syct.onrender.com/create-room", {
+      const createRes = await axios.post("https://videomeet-2-f733.onrender.com/create-room", {
         name: `Meeting-${Date.now()}`,
       });
       const newRoomId = createRes.data.room.id;
